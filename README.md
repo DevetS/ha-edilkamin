@@ -2,6 +2,8 @@
 
 Edilkamin The Mind custom integration for Home Assistant
 
+**Updated by DevetS for solving Gateway Error 504**
+
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-41BDF5.svg?style=for-the-badge)](https://github.com/hacs/integration)
 
 This component provides custom integration with Edilkamin pellet stoves and The Mind Wifi module. It was tested with a 2022 Lena stove and may not work at 100% with other models. 
