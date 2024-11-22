@@ -103,7 +103,7 @@ class EdilkaminFan(CoordinatorEntity, FanEntity):
 
         fan_speed = FAN_PERCENTAGE_SPEED[percentage]
         token = self.coordinator.get_token()
-        payload = {"name": f"fan_{fan_index}_speed", "value": fan_speed}
+        payload = {"name": f"fan_{self._fan_index}_speed", "value": fan_speed}
 
         await self.hass.async_add_executor_job(
             edilkamin.mqtt_command,
