@@ -48,6 +48,13 @@ class EdilkaminCoordinator(DataUpdateCoordinator):
     async def update(self) -> None:
         """Get the latest data and update the relevant Entity attributes."""
         self._token = await self.refresh_token()
+        payload = {"name": "check"}
+        await self.hass.async_add_executor_job(
+            edilkamin.mqtt_command,
+            token,
+            self._mac_address,
+            payload
+        )
         return await self.hass.async_add_executor_job(
             edilkamin.device_info,
             self._token,

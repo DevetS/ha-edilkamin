@@ -1,7 +1,7 @@
 {
   "domain": "edilkamin",
   "name": "Edilkamin Stove",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "config_flow": true,
   "documentation": "https://github.com/nghaye/ha-edilkamin",
   "requirements": ["edilkamin==1.2.0"],
@@ -9,7 +9,7 @@
   "zeroconf": [],
   "homekit": {},
   "dependencies": ["http"],
-  "codeowners": ["@nghaye"],
+  "codeowners": ["@devets"],
   "iot_class": "cloud_polling",
   "integration_type": "device",
   "dhcp": [
