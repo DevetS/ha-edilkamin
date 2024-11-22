@@ -72,7 +72,7 @@ class EdilkaminCoordinator(DataUpdateCoordinator):
         try:
             # Note: asyncio.TimeoutError and aiohttp.ClientError are already
             # handled by the data update coordinator.
-            async with async_timeout.timeout(20):
+            async with async_timeout.timeout(200):
                 return await self.update()
         except:
             raise UpdateFailed("Error communicating with API")
