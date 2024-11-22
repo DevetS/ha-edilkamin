@@ -48,7 +48,7 @@ class EdilkaminCoordinator(DataUpdateCoordinator):
     async def update(self) -> None:
         """Get the latest data and update the relevant Entity attributes."""
         self._token = await self.refresh_token()
-        LOGGER.debug(self._token)
+        """LOGGER.debug(self._token)"""
         LOGGER.debug("DEVETS: Command Check")
         res = await self.hass.async_add_executor_job(
             edilkamin.check_connection,

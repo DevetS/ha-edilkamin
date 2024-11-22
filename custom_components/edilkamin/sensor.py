@@ -54,6 +54,7 @@ async def async_setup_entry(
     async_add_entities(
         [
             PowerOnsNumber(coordinator, name),
+            ActualPower(coordinator, name),
             WorkingTime(coordinator, name, 0),
             WorkingTime(coordinator, name, 1),
             WorkingTime(coordinator, name, 2),
@@ -99,6 +100,43 @@ class PowerOnsNumber(CoordinatorEntity, SensorEntity):
         """Handle updated data from the coordinator."""
         self._attr_native_value = (
             self.coordinator.data["nvm"]["total_counters"]["power_ons"]
+        )
+        self.async_write_ha_state()
+
+
+
+class ActualPower(CoordinatorEntity, SensorEntity):
+    """Number of actual power sensor entity"""
+
+    def __init__(
+        self,
+        coordinator,
+        name: str,
+    ) -> None:
+        """Create the Edilkamin actual power sensor entity."""
+        super().__init__(coordinator)
+
+        self._mac_address = coordinator.get_mac()
+
+        self._attr_name = f"{name} Actual Power"
+        self._attr_unique_id = f"{self._mac_address}_actualpower"
+        self._attr_icon = "mdi:counter"
+
+        # Initial value
+        self._attr_native_value = (
+            self.coordinator.data["status"]["state"]["actual_power"]
+        )
+
+        self._attr_device_info = {
+            "identifiers": {("edilkamin", self._mac_address)}
+        }
+
+        self._attr_state_class = SensorStateClass.MEASUREMENT
+
+    def _handle_coordinator_update(self) -> None:
+        """Handle updated data from the coordinator."""
+        self._attr_native_value = (
+            self.coordinator.data["status"]["state"]["actual_power"]
         )
         self.async_write_ha_state()
 
