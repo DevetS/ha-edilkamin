@@ -74,7 +74,7 @@ class EdilkaminCoordinator(DataUpdateCoordinator):
             # handled by the data update coordinator.
             async with async_timeout.timeout(200):
                 return await self.update()
-        except, e:
+        except Exception as e:
             LOGGER.debug('Failed to upload to ftp: '+ str(e))
             raise UpdateFailed("Error communicating with API")
 
