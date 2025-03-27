@@ -77,7 +77,7 @@ class EdilkaminClimate(CoordinatorEntity, ClimateEntity):
     """Representation of a stove."""
 
     _attr_hvac_modes = [HVACMode.HEAT, HVACMode.OFF]
-    _attr_temperature_unit = UnitOfTemperature.TEMP_CELSIUS
+    _attr_temperature_unit = UnitOfTemperature.CELSIUS
     _attr_supported_features = (ClimateEntityFeature.TARGET_TEMPERATURE |
                                 ClimateEntityFeature.FAN_MODE |
                                 ClimateEntityFeature.PRESET_MODE)
